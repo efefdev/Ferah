@@ -39,7 +39,8 @@ struct Ortam {
                      depoKlasoru: Yol.ekle(kok, "Library/Application Support/Ferah"),
                      copeTasiyici: { url in try DenemeEvi.copeTasi(url, cop: cop) },
                      kendiPaketi: Yol.ekle(kok, "Applications/Ferah.app"),
-                     calisanKimlikler: { calisanlar().union([DenemeEvi.calisanKimlik]) },
+                     // Gerçek Mac'te çalışan uygulamalar sahte evi etkilemesin (sınamalar ortama bağlı olmasın).
+                     calisanKimlikler: { [DenemeEvi.calisanKimlik] },
                      disKokler: false, esikSecenekleriMB: [1, 100, 500, 1000], varsayilanEsikMB: 1,
                      sistemEsik: 1_000_000, sistemInmeEsigi: 2_500_000)
     }
