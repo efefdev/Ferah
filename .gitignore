@@ -1,0 +1,28 @@
+# SwiftPM
+.build/
+.swiftpm/
+Package.resolved
+*.xcodeproj
+xcuserdata/
+DerivedData/
+
+# paketle.sh çıktısı
+build/
+*.app
+*.icns
+*.iconset/
+*.dSYM/
+
+# macOS
+.DS_Store
+._*
+
+# Düzenleyiciler
+.vscode/
+.idea/
+*.swp
+
+# Kişisel tarama çıktıları ve ekran görüntüleri (kendi diskinin dökümünü depoya koyma)
+*.json
+!Package.json
+ekran/*.kisisel.png
