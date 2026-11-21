@@ -68,12 +68,32 @@ Bu kurallar `--oz-sinama` ile geçici bir klasörde sınanır (273 sınama). Ara
 
 ## Kurulum
 
-Şimdilik yalnız kaynak koddan derlenir. Xcode gerekmez; Command Line Tools yeter.
+### İndir
+
+1. [Son sürümden](https://github.com/efefdev/Ferah/releases/latest) `Ferah-1.0.zip` dosyasını indir. Evrensel bir uygulamadır (Apple Silicon ve Intel), macOS 14 ya da üstü gerekir.
+2. Zip'i aç ve `Ferah.app`'i Uygulamalar klasörüne taşı.
+3. Ferah henüz Apple Developer ID ile imzalı olmadığı için ilk açılışta macOS geliştiriciyi doğrulayamadığını söyler. **Bitti**'ye bas ("Çöp Kutusu'na Taşı"ya değil), sonra **Sistem Ayarları > Gizlilik ve Güvenlik** bölümünde aşağı kaydır ve Ferah ile ilgili iletinin yanındaki **Yine de Aç**'a bas. Bunu yalnız bir kez yapman gerekir.
+
+   Terminal'i tercih edersen aynı işi bu komut yapar:
+
+   ```bash
+   xattr -dr com.apple.quarantine /Applications/Ferah.app
+   ```
+
+İndirdiğin dosyayı release notlarındaki SHA-256 ile karşılaştırabilirsin:
+
+```bash
+shasum -a 256 ~/Downloads/Ferah-1.0.zip
+```
+
+### Kaynaktan derle
+
+Xcode gerekmez; Command Line Tools yeter.
 
 **Gerekenler:** macOS 14 ya da üstü, Swift 6 (`xcode-select --install`).
 
 ```bash
-git clone <depo adresi>
+git clone https://github.com/efefdev/Ferah.git
 ```
 
 ```bash
@@ -84,7 +104,7 @@ cd Ferah && ./paketle.sh
 open build/Ferah.app
 ```
 
-`paketle.sh`, `build/Ferah.app` paketini üretir ve ad-hoc imzalar. İstersen `/Applications` klasörüne taşıyabilirsin.
+`paketle.sh`, `build/Ferah.app` paketini bu Mac'in mimarisi için üretir ve ad-hoc imzalar; `./paketle.sh --evrensel` ise release'lerde kullanılan evrensel (Apple Silicon + Intel) uygulamayı üretir. İstersen `/Applications` klasörüne taşıyabilirsin.
 
 ### Tam Disk Erişimi
 
@@ -105,7 +125,7 @@ Neyin sınandığı, neyin sınanmadığı:
   - tarama ile silme arasında dosyanın kaybolması ya da sembolik bağa dönüşmesi.
 - **Elle denenenler:** Her sayfa deneme kipinde, yöntemler doğrudan çağrılarak değil, gerçek düğmelere macOS Erişilebilirlik üzerinden basılarak baştan sona da denendi: Adım 1 temizliği ve onayı, Büyük dosyalarda sakla / Çöp'e taşı / klavyeyle onay / liste görünümünde toplu taşıma, "Verilerini de kaldır" kapalı ve açıkken uygulama kaldırma, bir Sistem verileri kalemini taşıma, Çöp'ü boşaltma, Geçmiş ve dili anında değiştirme. Her adımdan sonra diskteki dosyalar kontrol edildi.
 - **Görsel denetim:** açık ve koyu tema deneme kipinde, Türkçe ve İngilizce, beş sayfa, bir onay penceresi ve en küçük pencere boyutunda gözle kontrol edildi. "Göz at" (Quick Look) görsel olarak kontrol edilmedi.
-- **Tek Mac:** yalnız tek bir Mac'te (Apple Silicon, macOS 26) çalıştırıldı.
+- **Tek Mac:** yalnız tek bir Mac'te (Apple Silicon, macOS 26) çalıştırıldı. Evrensel uygulamanın Intel kısmı öz-sınamaları ve akış sınamalarını Rosetta altında geçiyor, ama gerçek bir Intel Mac'te çalıştırılmadı.
 - **APFS klonları:** gösterilen boyut, silinince gerçekten açılacak yerdir (`ATTR_CMNEXT_PRIVATESIZE`). Bir dosyanın klonu tek başına ~0 gösterilir; klon ailesinin tüm üyeleri aynı ölçümdeyse paylaşılan kısım bir kez sayılır. Sınırları:
   - Kısmen değiştirilmiş klonların ortak kısmı hiç "açılacak" sayılmaz (tutucu).
   - Klon bilgisi hız için yalnız 1 MB'tan büyük dosyalarda okunur.

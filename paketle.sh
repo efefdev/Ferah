@@ -6,9 +6,22 @@ cd "$(dirname "$0")"
 KOK="$(pwd)"
 APP="$KOK/build/Ferah.app"
 
-echo "→ Derleniyor (release)…"
-swift build -c release
-IKILI="$(swift build -c release --show-bin-path)/Ferah"
+# Kullanım: ./paketle.sh            → bu Mac'in mimarisi için
+#           ./paketle.sh --evrensel → Apple Silicon + Intel (evrensel ikili; dağıtım için)
+EVRENSEL=0
+[ "${1:-}" = "--evrensel" ] && EVRENSEL=1
+
+if [ "$EVRENSEL" = 1 ]; then
+    echo "→ Derleniyor (release, arm64 + x86_64)…"
+    swift build -c release --triple arm64-apple-macosx14.0
+    swift build -c release --triple x86_64-apple-macosx14.0
+    IKILI="$(mktemp -d)/Ferah"
+    lipo -create -output "$IKILI" .build/arm64-apple-macosx/release/Ferah .build/x86_64-apple-macosx/release/Ferah
+else
+    echo "→ Derleniyor (release)…"
+    swift build -c release
+    IKILI="$(swift build -c release --show-bin-path)/Ferah"
+fi
 
 echo "→ Paket kuruluyor: $APP"
 rm -rf "$APP"

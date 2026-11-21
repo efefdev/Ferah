@@ -70,12 +70,32 @@ These rules are tested in a temporary folder with `--oz-sinama` (273 tests). The
 
 ## Installation
 
-For now it's source-only. You don't need Xcode; the Command Line Tools are enough.
+### Download
+
+1. Download `Ferah-1.0.zip` from the [latest release](https://github.com/efefdev/Ferah/releases/latest). It's a universal app (Apple silicon and Intel) for macOS 14 or later.
+2. Open the zip and move `Ferah.app` to your Applications folder.
+3. Ferah isn't signed with an Apple Developer ID yet, so the first time you open it macOS says it can't verify the developer. Click **Done** (not "Move to Trash"), then go to **System Settings > Privacy & Security**, scroll down and click **Open Anyway** next to the message about Ferah. You only need to do this once.
+
+   If you prefer the Terminal, this does the same:
+
+   ```bash
+   xattr -dr com.apple.quarantine /Applications/Ferah.app
+   ```
+
+You can check the download against the SHA-256 listed in the release notes:
+
+```bash
+shasum -a 256 ~/Downloads/Ferah-1.0.zip
+```
+
+### Build from source
+
+You don't need Xcode; the Command Line Tools are enough.
 
 **Requirements:** macOS 14 or later, Swift 6 (`xcode-select --install`).
 
 ```bash
-git clone <repository URL>
+git clone https://github.com/efefdev/Ferah.git
 ```
 
 ```bash
@@ -86,7 +106,7 @@ cd Ferah && ./paketle.sh
 open build/Ferah.app
 ```
 
-`paketle.sh` builds `build/Ferah.app` and signs it ad hoc. You can move it to your Applications folder if you like.
+`paketle.sh` builds `build/Ferah.app` for your Mac's architecture and signs it ad hoc; `./paketle.sh --evrensel` builds a universal (Apple silicon + Intel) app, as used for releases. You can move it to your Applications folder if you like.
 
 ### Full Disk Access
 
@@ -107,7 +127,7 @@ What is and isn't tested:
   - a file disappearing or turning into a symbolic link between the scan and the deletion.
 - **Tried by hand:** every page was also driven end to end in demo mode by pressing the real buttons through macOS Accessibility (not by calling methods): Step 1 cleanup with its confirmation, Large Files keep / move / keyboard confirmation / list-view bulk move, removing apps with "Also remove its data" off and on, moving a System Data item, emptying the Trash, History, and switching the language live. Files on disk were checked after each step.
 - **Visual check:** checked by eye in demo mode, in light and dark appearance, in Turkish and English: five pages, a confirmation dialog, and the smallest window size. Quick Look wasn't checked visually.
-- **One Mac:** run on a single Mac only (Apple silicon, macOS 26).
+- **One Mac:** run on a single Mac only (Apple silicon, macOS 26). The Intel half of the universal app passes the self-tests and flow tests under Rosetta, but hasn't been run on a real Intel Mac.
 - **APFS clones:** the size shown is the space actually freed on deletion (`ATTR_CMNEXT_PRIVATESIZE`). A clone on its own shows ~0; if every member of a clone family is in the same measurement, the shared part is counted once. Limits:
   - The shared part of partially modified clones is never counted as freed (conservative).
   - For speed, clone information is only read for files larger than 1 MB.
