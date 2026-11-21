@@ -4,6 +4,8 @@ A native, offline disk cleaner for macOS. What sets it apart: it never deletes w
 
 **English** · [Türkçe](README.tr.md)
 
+<p align="center"><img src="docs/screenshots/2-large-files.png" alt="Ferah's Large Files step: a card for a 820 MB video explaining that it is gone for good unless there is a copy elsewhere" width="820"></p>
+
 > [!WARNING]
 > Ferah deletes files. It comes with no warranty (see [LICENSE](LICENSE)). Don't use it without a backup of your important data. Read the [Status](#status) section below.
 
@@ -18,6 +20,24 @@ It works in five steps:
 5. **Summary.** Space recovered, what was done, and a history of every action.
 
 The interface is available in Turkish and English. It follows the system language (Turkish if your system is set to Turkish, otherwise English), and you can switch it from the globe menu at the bottom of the sidebar.
+
+## Screenshots
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/1-safe-cleanup.png" alt="Safe Cleanup: caches, logs and old installers grouped by category, each with a risk badge"><br><b>Safe Cleanup</b> — known clutter, grouped and explained</td>
+<td width="50%"><img src="docs/screenshots/3-large-files-list.png" alt="Large Files list view with size, kind and risk for each item"><br><b>Large Files</b> — list view, with a risk for every item</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/4-apps.png" alt="Apps page listing apps not opened in six months, with the leftover data of the selected app"><br><b>Apps</b> — what you haven't opened in months, and what it leaves behind</td>
+<td><img src="docs/screenshots/5-system-data.png" alt="System Data page showing where space goes and a possibly leftover folder"><br><b>System Data</b> — where the space goes, and what you can do about it</td>
+</tr>
+<tr>
+<td colspan="2" align="center"><img src="docs/screenshots/6-summary.png" alt="Summary page showing 2.05 GB freed, broken down by step" width="50%"><br><b>Summary</b> — what was freed, step by step</td>
+</tr>
+</table>
+
+Screenshots were taken in demo mode, on a fake home folder with made-up apps and files.
 
 ### "What happens if you delete it?"
 

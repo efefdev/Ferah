@@ -4,6 +4,8 @@ macOS için yerel, çevrimdışı bir disk temizlik uygulaması. Farkı: hiçbir
 
 [English](README.md) · **Türkçe**
 
+<p align="center"><img src="docs/screenshots/2-large-files.png" alt="Ferah'ın Büyük dosyalar adımı: 820 MB'lık bir video için başka kopyası yoksa geri gelmeyeceğini açıklayan kart" width="820"></p>
+
 > [!WARNING]
 > Ferah dosya siler. Hiçbir garanti verilmez (bkz. [LICENSE](LICENSE)). Önemli verilerinin yedeği olmadan kullanma. Aşağıdaki [Durum](#durum) bölümünü oku.
 
@@ -16,6 +18,24 @@ Beş adımda çalışır:
 3. **Uygulamalar.** Uzun süredir açmadığın uygulamaları son kullanım tarihi, boyut ve geride bıraktığı verilerle listeler. **Çöp Kutusu'na taşınır.**
 4. **Sistem verileri.** Depolama ekranındaki "Sistem Verileri"nin nereye gittiğini ölçer ve her kalem için ne yapılabileceğini söyler.
 5. **Özet.** Kazanılan yer, yapılan işlemler ve işlem geçmişi.
+
+## Ekran görüntüleri
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/1-safe-cleanup.png" alt="Güvenli temizlik: kategorilere ayrılmış önbellekler, günlükler ve eski kurulum dosyaları, her birinde risk rozeti"><br><b>Güvenli temizlik</b> — bilinen gereksizler, gruplanmış ve açıklanmış</td>
+<td width="50%"><img src="docs/screenshots/3-large-files-list.png" alt="Büyük dosyalar liste görünümü: her öğe için boyut, tür ve risk"><br><b>Büyük dosyalar</b> — liste görünümü, her öğenin riskiyle</td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/4-apps.png" alt="Altı aydır açılmayan uygulamalar ve seçili uygulamanın geride bıraktığı veriler"><br><b>Uygulamalar</b> — aylardır açmadıkların ve geride bıraktıkları</td>
+<td><img src="docs/screenshots/5-system-data.png" alt="Sistem verileri: yerin nereye gittiği ve sahipsiz olabilecek bir klasör"><br><b>Sistem verileri</b> — yer nereye gidiyor, ne yapılabilir</td>
+</tr>
+<tr>
+<td colspan="2" align="center"><img src="docs/screenshots/6-summary.png" alt="Adım adım kazanılan 2,05 GB'ı gösteren özet sayfası" width="50%"><br><b>Özet</b> — adım adım ne kazanıldı</td>
+</tr>
+</table>
+
+Ekran görüntüleri deneme kipinde, uydurma uygulama ve dosyalarla dolu sahte bir ev klasöründe alındı; arayüz İngilizce gösteriliyor, uygulamada Türkçe de seçilebilir.
 
 ### "Silersen ne olur?"
 

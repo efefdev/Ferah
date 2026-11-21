@@ -41,7 +41,8 @@ struct AnaGorunum: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            if d.ortam.deneme {
+            // --vitrin: yalnız deneme kipinde, README ekran görüntüleri için şeridi gizler.
+            if d.ortam.deneme, !CommandLine.arguments.contains("--vitrin") {
                 HStack(spacing: 8) {
                     Image(systemName: "testtube.2")
                     Text(T(.dBanner)).fontWeight(.semibold)

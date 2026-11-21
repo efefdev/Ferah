@@ -34,7 +34,7 @@ Komutlar.dil = acilisDili
 func m(_ a: M, _ args: MetinArg...) -> String { Metin(a, dizi: args)(acilisDili) }
 
 /// Arayüzü açarken kabul edilen bayraklar; değer alanlar ayrıca listelenir. Tanınmayan bir `--` bayrağı arayüzü AÇMAZ.
-let arayuzBayraklari: Set<String> = ["--ac-ve-tara", "--ac-buyuk", "--ac-uygulamalar", "--ac-sistem", "--deneme-onay", "--her-masaustu"]
+let arayuzBayraklari: Set<String> = ["--ac-ve-tara", "--ac-buyuk", "--ac-uygulamalar", "--ac-sistem", "--deneme-onay", "--her-masaustu", "--vitrin"]
 let degerliBayraklar: Set<String> = ["--deneme-evi", "--tema", "--adim", "--pencere", "--dil"]
 
 if argumanlar.contains("--oz-sinama") {
